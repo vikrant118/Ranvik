@@ -1,54 +1,18 @@
-import type {NextConfig} from 'next';
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: 'export',
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
+        hostname: '**', // or specify domains like 'cdn.pixabay.com'
       },
-      {
-        protocol: 'https',
-        hostname: 'cdn.pixabay.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'jaibhawanicab.in',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'user-images.githubusercontent.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'media-bom2-3.cdn.whatsapp.net',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'roadmateindia.com',
-        port: '',
-        pathname: '/**',
-      }
     ],
+    // OR, for older Next.js:
+    // domains: ['cdn.pixabay.com', 'media-bom2-3.cdn.whatsapp.net', ...],
+    unoptimized: true // <-- Add this for static export!
   },
+  // ...other config options...
 };
 
 export default nextConfig;
